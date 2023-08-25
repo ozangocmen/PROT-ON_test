@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PROT-ON</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<br>
+<div class="container">
+<header>
+<style>
+header
+{
+    background-color: #181717;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.col-md-8{
+    font-size: 16px;
+    font-family:"-apple-system";
+    width: 80%
+     
+}
+.row {
+    margin:0px auto;
+    border-radius: 7px 7px 7px 7px;
+}
+</style> 
+<div id="logo">
+    <p align = "center"><a href="/"><img src="/static/proton-logo_web.png" style="max-width:100%;height:auto;"></a></p>
+</div>    
+</header>
+<style>
+.navbar{
+  background-color:#181717;
+  font-size: 15px;
+  font-family:Helvetica;
+}
+.modal-header {
+  padding: 0;
+}
+.modal-header .close {
+  padding: 10px 15px;
+}
+.modal-header ul {
+  border: none;
+}
+.modal-header ul li {
+  margin: 0;
+}
+.modal-header ul li a {
+  border: none;
+  border-radius: 0;
+}
+.modal-header ul li.active a {
+  color: #e12f27;
+}
+.modal-header ul li a:hover {
+  border: none;
+}
+.modal-header ul li a span {
+  margin-left: 10px;
+}
+.modal-body .form-group {
+  margin-bottom: 10px;
+}
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+</style>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/new-run">New Run</a></li>
+        <!--<li><a href="/#" data-toggle="modal" data-target=".download-modal"><span class="glyphicon glyphicon-cloud-download"></span> Download</a></li>-->
+        <li><a href="/pre-calculated_runs">Pre-calculated Runs</a></li>
+        <li><a href="/tutorials">Tutorials</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/help">Help</a></li>
+        <li><a href="/#" data-toggle="modal" data-target=".give-feedback-modal"><span class="glyphicon glyphicon-envelope"></span> Feedback</a></li>
+      </ul>
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" data-toggle="modal" data-target=".login-register-form"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#" data-toggle="modal" data-target=".login-register-form"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>-->
+    </div>
+  </div>
+</nav>
+</div>
+
+<!-- Login / Register Modal
+<div class="modal fade login-register-form" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#login-form"> Login <span class="glyphicon glyphicon-user"></span></a></li>
+          <li><a data-toggle="tab" href="#registration-form"> Register <span class="glyphicon glyphicon-pencil"></span></a></li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div id="login-form" class="tab-pane fade in active">
+            <form action="/">
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+              </div>
+              <button type="submit" class="btn btn-default">Login</button>
+            </form>
+          </div>
+          <div id="registration-form" class="tab-pane fade">
+            <form action="/">
+              <div class="form-group">
+                <label for="register_name">Your Name:</label>
+                <input type="text" class="form-control" id="register_name" placeholder="Enter your name" name="register_name" required>
+              </div>
+              <div class="form-group">
+                <label for="register_email">Email:</label>
+                <input type="email" class="form-control" id="register_email" placeholder="Enter new email" name="register_email" required>
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Password" name="pwd" required>
+              </div>
+              <div class="form-group">
+                <label for="confirmpwd">Confirm Password:</label>
+                <input type="password" class="form-control" id="confirmpwd" placeholder="Confirm password" name="confirmpwd" required>
+              </div>
+              <button type="submit" class="btn btn-default">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<!-- Download Modal
+<div class="modal fade download-modal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#download"> Standalone Version <span class="glyphicon glyphicon-cloud-download"></span></a></li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div id="download" class="tab-pane fade in active">
+            <label style = "text-align:center">If you interest the standalone version of Prot-ON, please click the below button.</label>
+            <br>
+            <br>
+            <a href="https://github.com/CSB-KaracaLab/prot-on" target="_blank" class="btn btn-primary" style = "margin:0 auto; display:block;">Go to GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<div class="container">
+    <div class = "col-md-8">
+        <style>
+.alert {
+  font-size: 20px;
+}
+</style>
+
+  
+
+        
+  <style>
+  input { margin-bottom: 10px; }
+  select {
+    width: 100%;
+  }
+  /* The switch - the box around the slider */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked+.slider {
+    background-color: #2196F3;
+  }
+  input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  *{font-family: Helvetica;
+    font-size: 15px}
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .fileUploadInput {
+    display: grid;
+    grid-gap: 10px;
+    position: relative;
+    z-index: 1; }
+    
+    .fileUploadInput label {
+      display: flex;
+      align-items: center;
+      color: setColor(primary, 0.5);
+      background: setColor(white);
+      transition: .4s ease;
+      font-family: Helvetica;
+      font-size: .75em;
+      font-weight: regular; }
+      
+    .fileUploadInput input {
+      position: relative;
+      z-index: 1;
+      padding: 0 gap(m);
+      width: 100%;
+      height: 35px;
+      border: 1px solid #bdbebd;
+      border-radius: 3px;
+      font-family: Helvetica;
+      font-size: 15px;
+      user-select: none;
+      cursor: pointer;
+      font-weight: regular; }
+      .fileUploadInput input[type="file"] {
+        padding: 0 gap(m); }
+        .fileUploadInput input[type="file"]::-webkit-file-upload-button {
+          visibility: hidden;
+          margin-left: 10px;
+          padding: 0;
+          height: 30px;
+          width: 0; }e
+          
+    .fileUploadInput button {
+      position: absolute;
+      right: 0;
+      bottom: 10;
+      width: 50px;
+      height: 35px;
+      line-height: 0;
+      user-select: none;
+      color: white;
+      background-color: #bdbebd;
+      border-radius: 0 3px 3px 0;
+      font-family: Helvetica;
+      font-weight: 800; }
+      .fileUploadInput button svg {
+        width: auto;
+        height: 50%; }
+
+  * {
+    box-sizing: border-box;
+    border: 0px;}
+
+  @-moz-document url-prefix() {
+  .fileUploadInput button{
+      display: none
+  }
+  }
+  .range_slider {
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  input[type='radio'][name='buttonGroup'] { display:none; }
+  .algorithm_button {
+    display:inline-block;
+    padding:3px;
+    border:1px solid #e0e0e0;
+    color: white;
+    border-radius:3px;
+    font-family: Helvetica;
+    background-color:#ccc;
+    width:10em;
+    text-align:center;
+  }
+  /* Clicking a label will select its corresponding hidden radio button
+    We can select that radio buttons sibling label and style it. */
+  input[type='radio'][name='buttonGroup']:checked + .algorithm_button { background-color:#2196F3; }
+  </style>
+  <form action="/new-run" method="POST" enctype=multipart/form-data>
+    <div class = "row">
+      <div class = "col-md-4">
+      <label for="run_name" title="You may enter a name for your run">Specify your run name*</label>
+      </div>
+      <div class = "col-md-4">
+      <input class="form-control" id="run_name" name="run_name" placeholder="Run Name" required="required" type="text" value="">
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+      <label for="structure">Choose / Upload your protein complex*</label>
+      </div>
+      <div class="col-md-4">
+      <p style="text-align:justify;">Enter a PDB ID</p> 
+      <input class="form-control" id="pdb_id" name="pdb_id" title="You may enter a PDB ID" placeholder="PDB_ID" minlength = "4" maxlength="4" type="text" value="" required>
+      </div>
+      <div class="col-md-4">
+      <p>Or upload a PDB file.</p>
+      <div class="fileUploadInput">
+        <input id="structure" name="structure" title="You may upload a PDB file"  type="file" accept=".pdb" required>
+        <button>📁</button>
+      </div>
+      </div> 
+    </div>
+    <div class = "row">
+      <div class = "col-md-4">
+        <label for="chains">Which dimer chains should be analyzed?*</label>
+        <label for="chains">Pick the monomer for mutational scanning*</label>
+        <p>(Per run, only one monomer can be analyzed)</p>
+      </div>
+      <div class = "col-md-4">
+        <div class="form-group">
+          <select id="chain_1" name="chain_1" class="form-control" required>
+            <option value="" selected>Select the 1st chain ID</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="J">J</option>
+            <option value="K">K</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>
+            <option value="O">O</option>
+            <option value="P">P</option>
+            <option value="Q">Q</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+            <option value="T">T</option>
+            <option value="U">U</option>
+            <option value="V">V</option>
+            <option value="W">W</option>
+            <option value="X">X</option>
+            <option value="Y">Y</option>
+            <option value="Z">Z</option>
+          </select>
+          <div style="text-align: center; display: inline-block;">
+            <label style="position:absolute; text-align: center; top:45px;"></label>
+            <label class="switch" style="position:absolute; left:75%; top:40px;">
+            <input type="checkbox" id="select_chain_1" required name="select_chain">
+            <span class="slider round"></span>
+            </label>
+          </div> 
+        </div>
+    <br>
+    </div>
+    <div class = "col-md-4">
+      <div class="form-group">
+        <select id="chain_2" name="chain_2" class="form-control" required>
+          <option value="" selected>Select the 2nd chain ID</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="H">H</option>
+          <option value="I">I</option>
+          <option value="J">J</option>
+          <option value="K">K</option>
+          <option value="L">L</option>
+          <option value="M">M</option>
+          <option value="N">N</option>
+          <option value="O">O</option>
+          <option value="P">P</option>
+          <option value="Q">Q</option>
+          <option value="R">R</option>
+          <option value="S">S</option>
+          <option value="T">T</option>
+          <option value="U">U</option>
+          <option value="V">V</option>
+          <option value="W">W</option>
+          <option value="X">X</option>
+          <option value="Y">Y</option>
+          <option value="Z">Z</option>
+        </select>
+        <div style="text-align: center; display: inline-block;">
+          <label style="position:absolute; text-align: center; top:45px;"></label>
+          <label class="switch" style="position:absolute; left:75%; top:40px;">
+          <input type="checkbox" id="select_chain_2" required name="select_chain">
+          <span class="slider round"></span>
+          </label>
+        </div>   
+      </div>
+    </div>
+    <br>
+    </div>
+    <br>
+    <div class = "row">
+      <div class = "col-md-4">
+        <label for="cut_off_distance">Define interface selection cut-off</label>
+        <p style = "text-align:justify">(Default 5Å)</p>
+        </div>
+        <div class = "col-md-4">
+        <div class="slidecontainer">
+          <input type="range" min="3.0" max="8.0" value="5.0" step="0.1" class="range_slider" required id="cut-off" name="cut_off">
+          <p style = "text-align: center;">Cut-off: <span id="identifed_cut-off"></span></p>
+        </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-md-4">
+          <label for="cut_off_distance">Identify the threshold to select the most enriching & depleting mutations</label>
+          <p style = "text-align:justify">(Default 1.5)</p>
+        </div>
+        <div class = "col-md-4">
+        <div class="slidecontainer">
+          <input type="range" min="1.5" max="2.5" value="1.5" step="0.1" class="range_slider" required id="iqr" name="iqr">
+          <p style = "text-align: center;">IQR whisker threshold: <span id="identifed_iqr"></span></p>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col-md-4">
+      <label for="pssm_file" >Evolutionary Filter (Optional)</label>
+      <p style = "text-align:justify">Upload a PSSM (Position Specific Scoring Matrix) file to filter out the predictions according to the evolutionary information <a href="https://raw.githubusercontent.com/CSB-KaracaLab/prot-on/main/example-input/complex_chain_D_pssm.csv" target="_blank"> (example PSSM file)</a></p> 
+      </div>
+      <div class="col-md-4">
+        <div class="fileUploadInput">
+          <input id="pssm_file" name="pssm_file" type="file" accept=".csv">
+          <button>📁</button>
+        </div>
+      </div>
+      <br>  
+    </div>
+    <!--<div class = "row">
+      <div class = "col-md-4">
+        <label for="algorithms">Select an algorithm*</label>
+        <p style = "text-align:justify">To impose the mutations and compute the synthetic binding energies.</a></p> 
+      </div>
+      <div class = "col-md-4" style = "left:25px;">
+        <input type="radio" name="buttonGroup" value="EvoEF1" checked id="EvoEF1"><label class = "algorithm_button" for="EvoEF1">EvoEF1</label>
+        <input type="radio" name="buttonGroup" value="FoldX" id="FoldX"><label class = "algorithm_button"  for="FoldX">FoldX</label>
+        <input type="radio" name="buttonGroup" value="OptimizedEvoEF1" id="OptimizedEvoEF1"><label class = "algorithm_button"  for="OptimizedEvoEF1">Optimized EvoEF1</label>
+      </div>
+    </div>
+    -->
+    <div class = "row">
+      <div class = "col-md-4">
+        <label>E-mail (Optional)</label>
+        <p style = "text-align:justify">Your email address will not be stored in our database.</a></p> 
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class = "col-md-4">
+          <input class="form-control" id="email_index" name="email" placeholder="E-mail" type="email" value="">
+      </div>
+    </div>
+  
+      <div class = "row">
+        <div class = "col-md-4">
+          <input type="submit" class="btn btn-default" value="Submit">
+        </div>
+      </div>
+
+  </form>
+  <script>
+    document.getElementById("chain_1").addEventListener("input", function(){
+    document.getElementById("select_chain_1").value = this.value;});
+    document.getElementById("chain_2").addEventListener("input", function(){
+    document.getElementById("select_chain_2").value = this.value;});
+  // get all inputs and hang event handlers
+  document.querySelectorAll('input[type=checkbox]').forEach(element => element.addEventListener('click', disableOther))
+  function disableOther(event) {
+    //"event" is current event(click)
+    //"event.target" is our clicked element
+    if (event.target.checked) {
+
+      // if current input is checked -> disable ALL inputs
+      document.querySelectorAll('input[type=checkbox]').forEach(element => element.disabled = true)
+      // enabling our current input
+      event.target.disabled = false;
+    } else {
+      // if current input is NOT checked -> enabling ALL inputs
+      document.querySelectorAll('input[type=checkbox]').forEach(element => element.disabled = false)
+    }
+  }
+  $("#pdb_id").on('keyup blur', function(){
+            if($.trim($("#pdb_id").val())){
+              $('#structure').attr("disabled", "disabled");
+          }else{$('#structure').removeAttr('disabled');}
+      });
+
+  $("#structure").on("change", function(){
+            if($.trim($("#structure").val())){
+              $('#pdb_id').attr("disabled", "disabled");
+          }else{$('#pdb_id').removeAttr('disabled');}
+      });
+  var slider = document.getElementById("cut-off");
+  var output = document.getElementById("identifed_cut-off");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
+  }
+  var iqr_slider = document.getElementById("iqr");
+  var iqr_output = document.getElementById("identifed_iqr");
+  iqr_output.innerHTML = iqr_slider.value;
+
+  iqr_slider.oninput = function() {
+    iqr_output.innerHTML = this.value;
+  }
+  jQuery(function ($) {
+    var $inputs = $('input[name=structure],input[name=pdb_id]');
+    $inputs.on('input', function () {
+        // Set the required property of the other input to false if this input is not empty.
+        $inputs.not(this).prop('required', !$(this).val().length);
+    });
+});
+  </script>
+  
+    </div>
+</div>
+</div> 
+<br>
+<br>
+<style>
+.footer{
+    background:#4C4646;
+    border-radius: 6px 6px 6px 6px;
+    max-width:100%;
+    height:auto;
+}
+*{
+  font-family:Helvetica;
+}
+</style>
+<div class = "container" style = "max-width:100%;height:auto;">
+<div class="footer" style = "max-width:100%;height:auto;">
+   <div class = "row">
+   <div class = "col-sm-4"></div>
+    <div class = "col-sm-4" style = "text-align:center; top:10px">
+      <a href="https://www.tuseb.gov.tr" target="blank">
+      <img src="/static/tuseb_logo.png" style="max-width:100%;height:auto;" title="Health Institutes of Türkiye" ></a>
+      <a href="https://www.embo.org" target="blank">
+      <img src="/static/EMBO-logo.png" style="max-width:100%;height:auto;" title="European Molecular Biology Organization" ></a>
+      <a href="https://www.ibg.edu.tr" target="blank">
+      <img src="/static/ibg_logo.png" style="max-width:100%;height:auto;" title="Izmir Biomedicine and Genome Center"></a>
+      <p style = "color:#ccc; font-size:12px;" >This study was funded by <a href="https://www.tuseb.gov.tr" target="blank">TÜSEB</a> (Project code: 2019-TA-02, Project number: 3393) and <a href="https://www.embo.org/" target="blank">EMBO IG 4421.</a></p>
+    </div>
+    <div class = "col-sm-4"></div>
+    <div class = "col-sm-4" style = "text-align:center; top:10px; max-width:100%; height:auto;">
+      <a href="https://www.ibg.edu.tr/research-programs/groups/karaca-lab/" target="blank">
+      <img src="C:\Users\OZAN\Desktop\proton\PROT-ON_Web-Server\static\karacalab.png" title="KaracaLab"></a>
+    </div>
+  </div>
+  <div class = "row">
+    <p style = "text-align:center; color:#ccc; font-size:12px;">Copyright &copy; 2022 All Rights Reserved by <a href="https://www.ibg.edu.tr/research-programs/groups/karaca-lab/" target="blank" style = "font-size:12px;">Karaca Lab.</a></p>
+  </div>
+</div>
+</div>
+<br>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</body>
+</html>
