@@ -22,5 +22,3 @@ else
 fi
 
 python setup.py
-
-python proton.py --pdb example-input/complex.pdb --chain_ID D --algorithm EvoEF1 --cut_off 5.0 --IQR 1.5
